@@ -17,7 +17,6 @@ export default function UserFormSearch(props) {
 
     const handleSubmit = useCallback(() => {
         dispatch(search({ name: user.name, phone: user.phone }))
-        setUser({ name: '', phone: '' })
     }, [dispatch, user])
 
     const handleReset = () => {

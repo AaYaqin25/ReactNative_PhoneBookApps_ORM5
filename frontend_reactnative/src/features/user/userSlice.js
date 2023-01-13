@@ -3,7 +3,7 @@ import { loadUser, addUser, removeUser, updateUser } from './UserAPI';
 
 import axios from 'axios'
 const request = axios.create({
-    baseURL: 'http://192.168.1.29:3000/',
+    baseURL: 'http://192.168.1.99:3000/',
     timeout: 1000,
     headers: { 'Authorization': 'token' }
 });
