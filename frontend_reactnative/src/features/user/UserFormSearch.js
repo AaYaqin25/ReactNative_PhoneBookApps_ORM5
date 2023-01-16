@@ -1,12 +1,10 @@
 import React, { useState, useCallback } from "react";
-import { useDispatch, useSelector } from 'react-redux'
-import { search, selectQuery, loadUserAsync } from "./userSlice";
+import { useDispatch } from 'react-redux'
+import { reset, search } from "./userSlice";
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 
 
 export default function UserFormSearch(props) {
-
-    let reset = useSelector(selectQuery)
 
     const dispatch = useDispatch()
 
@@ -19,11 +17,10 @@ export default function UserFormSearch(props) {
         dispatch(search({ name: user.name, phone: user.phone }))
     }, [dispatch, user])
 
-    const handleReset = () => {
-        reset = {page: 1, totalPage: 1, query: {}}
-        dispatch(loadUserAsync())
+    const handleResetSearch =() => {
+        dispatch(reset())
+        setUser({ name: '', phone: '' })
     }
-    
     return (
         <View style={{ display: 'flex', width: '100%', flexDirection: 'column', alignContent: 'flex-start', alignItems: 'center' }}>
             <TextInput
@@ -41,7 +38,7 @@ export default function UserFormSearch(props) {
             />
 
             <TouchableOpacity style={[styles.button, {marginBottom: 10, marginTop: 10}]} onPress={handleSubmit}><Text style={styles.labelButton}>Search</Text></TouchableOpacity>
-            <TouchableOpacity style={[styles.button, {backgroundColor: '#40c9e6', marginBottom: 10}]} onPress={handleReset}><Text style={styles.labelButton}>Reset</Text></TouchableOpacity>
+            <TouchableOpacity style={[styles.button, {backgroundColor: '#40c9e6', marginBottom: 10}]} onPress={handleResetSearch}><Text style={styles.labelButton}>Reset</Text></TouchableOpacity>
         </View>
     )
 }
