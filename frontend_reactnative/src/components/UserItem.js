@@ -82,13 +82,13 @@ export default function UserItem(props) {
                                 <View style={{ backgroundColor: 'white', paddingHorizontal: 30, paddingVertical: 30, borderRadius: 20 }}>
                                     <View style={{ marginBottom: 20, justifyContent: 'center', alignItems: 'center' }}>
                                         <Text style={{ marginBottom: 20 }}><Icon name="trash" size={40} color="red" /></Text>
-                                        <Text style={{ fontWeight: 'bold', color: 'black', marginBottom: 10, fontSize: 15 }}>Are you sure want to delete this contact ?</Text>
-                                        <Text style={{ fontWeight: 'bold', color: 'black', fontSize: 15, marginBottom: 2 }}>Name: {user.name}</Text>
-                                        <Text style={{ fontWeight: 'bold', color: 'black', fontSize: 15 }}>Phone: {user.phone}</Text>
+                                        <Text style={{ fontWeight: 'bold', color: 'black', marginBottom: 10, fontFamily: 'Papyrus' }}>Are you sure want to delete this contact ?</Text>
+                                        <Text style={{ fontWeight: 'bold', color: 'black', marginBottom: 2 }}>Name: {user.name}</Text>
+                                        <Text style={{ fontWeight: 'bold', color: 'black' }}>Phone: {user.phone}</Text>
                                     </View>
                                     <View style={{ justifyContent: 'space-between', alignItems: 'center' }}>
-                                        <TouchableOpacity style={{ borderWidth: 1, borderColor: 'black', backgroundColor: '#f04848', width: '70%', borderRadius: 30, marginBottom: 5 }} onPress={props.remove}><Text style={{ fontWeight: 'bold', textAlign: 'center', color: '#fefefe' }}>Delete</Text></TouchableOpacity>
-                                        <TouchableOpacity style={{ borderWidth: 1, borderColor: 'black', backgroundColor: '#bbbcbe', width: '70%', borderRadius: 30 }} onPress={() => setModal(false)}><Text style={{ fontWeight: 'bold', textAlign: 'center', color: '#fefefe' }}>Cancel</Text></TouchableOpacity>
+                                        <TouchableOpacity style={{ borderWidth: 1, borderColor: 'black', backgroundColor: '#f04848', width: '90%', padding: 5, borderRadius: 30, marginBottom: 7 }} onPress={props.remove}><Text style={{ fontWeight: 'bold', textAlign: 'center', color: '#fefefe' }}>Delete</Text></TouchableOpacity>
+                                        <TouchableOpacity style={{ borderWidth: 1, borderColor: 'black', backgroundColor: '#bbbcbe', width: '90%', padding: 5, borderRadius: 30 }} onPress={() => setModal(false)}><Text style={{ fontWeight: 'bold', textAlign: 'center', color: '#fefefe' }}>Cancel</Text></TouchableOpacity>
                                     </View>
                                 </View>
                             </Modal>
