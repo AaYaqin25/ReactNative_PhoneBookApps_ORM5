@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from "react"
 import { View, Text, TouchableOpacity, StyleSheet, TextInput } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome5';
-
+import Modal from 'react-native-modal'
 
 export default function UserItem(props) {
 
@@ -14,6 +14,8 @@ export default function UserItem(props) {
     const [edit, setEdit] = useState({
         isEdit: false
     })
+
+    const [modal, setModal] = useState(false)
 
     const handleClickEdit = () => {
         setEdit({
@@ -75,7 +77,21 @@ export default function UserItem(props) {
                         :
                         <View style={{ display: 'flex', flexDirection: 'row' }}>
                             <TouchableOpacity style={styles.edit} onPress={handleClickEdit}><Icon name="pen" size={20} color="white" /></TouchableOpacity>
-                            <TouchableOpacity style={styles.delete} onPress={props.remove}><Icon name="trash" size={20} color="white" /></TouchableOpacity>
+                            <TouchableOpacity style={styles.delete} onPress={() => setModal(true)}><Icon name="trash" size={20} color="white" /></TouchableOpacity>
+                            <Modal isVisible={modal}>
+                                <View style={{ backgroundColor: 'white', paddingHorizontal: 30, paddingVertical: 30, borderRadius: 20 }}>
+                                    <View style={{ marginBottom: 20, justifyContent: 'center', alignItems: 'center' }}>
+                                        <Text style={{ marginBottom: 20 }}><Icon name="trash" size={40} color="red" /></Text>
+                                        <Text style={{ fontWeight: 'bold', color: 'black', marginBottom: 10, fontSize: 15 }}>Are you sure want to delete this contact ?</Text>
+                                        <Text style={{ fontWeight: 'bold', color: 'black', fontSize: 15, marginBottom: 2 }}>Name: {user.name}</Text>
+                                        <Text style={{ fontWeight: 'bold', color: 'black', fontSize: 15 }}>Phone: {user.phone}</Text>
+                                    </View>
+                                    <View style={{ justifyContent: 'space-between', alignItems: 'center' }}>
+                                        <TouchableOpacity style={{ borderWidth: 1, borderColor: 'black', backgroundColor: '#f04848', width: '70%', borderRadius: 30, marginBottom: 5 }} onPress={props.remove}><Text style={{ fontWeight: 'bold', textAlign: 'center', color: '#fefefe' }}>Delete</Text></TouchableOpacity>
+                                        <TouchableOpacity style={{ borderWidth: 1, borderColor: 'black', backgroundColor: '#bbbcbe', width: '70%', borderRadius: 30 }} onPress={() => setModal(false)}><Text style={{ fontWeight: 'bold', textAlign: 'center', color: '#fefefe' }}>Cancel</Text></TouchableOpacity>
+                                    </View>
+                                </View>
+                            </Modal>
                         </View>
 
                     :
